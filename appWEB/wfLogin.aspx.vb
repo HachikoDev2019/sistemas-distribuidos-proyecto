@@ -1,4 +1,4 @@
-Imports capaNegocio
+﻿Imports capaNegocio
 
 Partial Class wfLogin
     Inherits System.Web.UI.Page

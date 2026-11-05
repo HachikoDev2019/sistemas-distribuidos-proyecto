@@ -1,4 +1,4 @@
-Imports System.Data
+﻿Imports System.Data
 Imports capaDatos
 Public Class clsPersonal
     Dim objMan As New clsMantenimiento
