@@ -1,0 +1,135 @@
+<%@ Master Language="VB" CodeFile="plantilla.master.vb" Inherits="plantilla" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 1200px;
+        }
+        .estiloMargen {
+            width: 50px;
+        }
+        .estiloMenu {
+            width: 300px;
+        }
+        .estiloCuerpo {
+            width: 800px;
+        }
+        .estiloCabecera {
+            text-align: center;
+            width: 1200px;
+            height: 340px;
+        }
+        .estiloPie {
+            height: 50px;
+        }
+        .auto-style3 {
+            height: 296px;
+            text-align: center;
+        }
+        .auto-style4 {
+            width: 300px;
+            height: 80px;
+        }
+        .auto-style5 {
+            width: 800px;
+            height: 50px;
+        }
+        .auto-style6 {
+            width: 300px;
+            height: 31px;
+        }
+        .auto-style7 {
+            width: 800px;
+            height: 30px;
+        }
+        .auto-style8 {
+            width: 15px;
+            height: 40px;
+        }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table align="center" cellpadding="0" cellspacing="0" class="auto-style1">
+            <tr>
+                <td class="auto-style3" colspan="4" style="background-color: #000000">
+                    <img alt="Banner Sistema" class="estiloCabecera" src="recursos/POMALCA.jpg" /></td>
+            </tr>
+            <tr>
+                 <td class="estiloMargen" rowspan="3" style="background-color: #000000">&nbsp;</td>
+                 <td class="auto-style6" style="background-color: #999999"></td>
+                 <td class="auto-style7" style="background-color: #999999"></td>
+                 <td class="estiloMargen" rowspan="3" style="background-color: #000000">&nbsp;</td>
+            </tr>
+            <tr>
+                 <td class="auto-style4" style="background-color: #999999; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: large; color: #072FCC; font-weight: bold;">
+                     <table cellpadding="0" cellspacing="0" class="estiloMenu">
+                         <tr>
+                            <td class="auto-style8" color: #072FCC;>&nbsp;</td>
+                            <td style="font-size: x-large; font-weight: bold">MENÚ DE OPCIONES</td>
+                         </tr>
+                          <tr>
+                             <td class="auto-style8" color: #072FCC;>&nbsp;</td>
+                             <td>
+                                 <asp:Button ID="btnMInicio" runat="server" BackColor="#999999" BorderColor="#999999" BorderStyle="None" Font-Bold="True" Font-Names="Trebuchet MS" Font-Size="Large" ForeColor="#072FCC" Text="Inicio" Width="180px" />
+                              </td>
+                         </tr>
+                         <tr>
+                             <td class="auto-style8" color: #072FCC;>&nbsp;</td>
+                             <td>
+                                 <asp:Button ID="btnMIniciarSesion" runat="server" BackColor="#999999" BorderColor="#999999" BorderStyle="None" Font-Bold="True" Font-Names="Trebuchet MS" Font-Size="Large" ForeColor="#072FCC" Text="Iniciar Sesión" Width="180px" />
+                             </td>
+                         </tr>
+                         <tr>
+                             <td class="auto-style8" color: #072FCC;>&nbsp;</td>
+                             <td>
+                                 <asp:Button ID="btnMCerrarSesion" runat="server" BackColor="#999999" BorderColor="#999999" BorderStyle="None" Font-Bold="True" Font-Names="Trebuchet MS" Font-Size="Large" ForeColor="#072FCC" Text="Cerrar Sesión" Width="180px" />
+                             </td>
+                         </tr>
+                         <tr>
+                             <td class="auto-style8" color: #072FCC;>&nbsp;</td>
+                             <td>
+                                 <asp:Button ID="btnMModificar" runat="server" BackColor="#999999" BorderColor="#999999" BorderStyle="None" Font-Bold="True" Font-Names="Trebuchet MS" Font-Size="Large" ForeColor="#072FCC" Text="Modificar Contraseña" Width="180px" />
+                             </td>
+                         </tr>
+                         <tr>
+                             <td class="auto-style8" color: #072FCC;>&nbsp;</td>
+                             <td>
+                                 <asp:Button ID="btnMPersonal" runat="server" BackColor="#999999" BorderColor="#999999" BorderStyle="None" Font-Bold="True" Font-Names="Trebuchet MS" Font-Size="Large" ForeColor="#072FCC" Text="Gestionar personal" Width="180px" />
+                             </td>
+                         </tr>
+                     </table>
+                     <br />
+                 </td>
+                 <td class="auto-style5">
+                     <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                         <p>
+                             <br />
+                         </p>
+        
+        </asp:ContentPlaceHolder>
+                 </td>
+            </tr>
+            <tr>
+                 <td class="auto-style6" style="background-color: #999999"></td>
+                 <td class="auto-style7" style="background-color: #999999"></td>
+            </tr>
+            <tr>
+                <td class="estiloPie" colspan="5" style="background-color: #000000; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: small; text-align: center; color: #072FCC;">© 2026 Sistema Pomalca - Grupo 2 - USAT</td>
+            </tr>
+        </table>
+        <br />
+        <br />
+    </div>
+    </form>
+</body>
+</html>

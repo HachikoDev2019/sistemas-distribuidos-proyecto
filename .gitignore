@@ -1,0 +1,6 @@
+.vs/
+capaDatos/bin/
+capaDatos/obj/
+capaNegocio/bin/
+capaNegocio/obj/
+PrecompiledWeb/
