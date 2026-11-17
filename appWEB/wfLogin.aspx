@@ -4,37 +4,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Iniciar Sesión - Azucarera Pomalca</title>
-    <link href="css/styles.css" rel="stylesheet" />
+    <title>Iniciar sesión - Pomalca</title>
+    <link href="css/estilos.css" rel="stylesheet" />
 </head>
-<body class="login-body">
+<body>
     <form id="form1" runat="server">
-        <div class="login-card">
-            <div style="text-align: center; margin-bottom: 28px;">
-                <div class="logo-login">POMALCA</div>
-                <h1 style="font-size: 22px; font-weight: 800; margin-bottom: 6px; color: #1e2a3a;">Portal de Personal</h1>
-                <p style="font-size: 13.5px; color: #7a8fa6;">Gestión de Solicitudes e Ingresos</p>
-            </div>
-
-            <div class="form-group-vertical">
-                <label for="txtDni">Número de DNI</label>
-                <div class="input-wrap">
-                    <span class="input-prefix">#</span>
-                    <asp:TextBox ID="txtDni" runat="server" MaxLength="8" placeholder="Ej. 45678912"></asp:TextBox>
-                </div>
-            </div>
-
-            <div class="form-group-vertical">
-                <label for="txtContraseña">Contraseña de Acceso</label>
-                <asp:TextBox ID="txtContraseña" runat="server" TextMode="Password" placeholder="••••••••"></asp:TextBox>
-            </div>
-
-            <asp:Button ID="btnIniciar" runat="server" CssClass="btn-submit-block" Text="Iniciar Sesión" />
-
-            <asp:Label ID="lblMensaje" runat="server" CssClass="mensaje"></asp:Label>
-        </div>
+        <table align="center" cellpadding="0" cellspacing="0" class="estiloLogin">
+            <tr>
+                <td style="text-align: center">
+                    <img alt="Pomalca" src="recursos/POMALCA.jpg" width="150" />
+                </td>
+            </tr>
+            <tr>
+                <td class="estiloTitulo" style="text-align: center">Iniciar sesión</td>
+            </tr>
+            <tr>
+                <td class="estiloSubtitulo" style="text-align: center">Portal de Personal Pomalca</td>
+            </tr>
+            <tr>
+                <td class="estiloEtiqueta">DNI:</td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:TextBox ID="txtDni" runat="server" CssClass="estiloCaja" MaxLength="8" Width="100%"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="estiloEtiqueta">Contraseña:</td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:TextBox ID="txtContraseña" runat="server" CssClass="estiloCaja" TextMode="Password" Width="100%"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Button ID="btnIniciar" runat="server" CssClass="estiloBoton" Text="Ingresar" Width="100%" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="lblMensaje" runat="server" CssClass="estiloMensaje"></asp:Label>
+                </td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>
