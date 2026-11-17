@@ -96,4 +96,13 @@ Public Class clsPersonal
             Throw New Exception("Error al listar el personal!")
         End Try
     End Function
+
+    Public Function listarOperariosCombo() As DataTable
+        strCon = "select id_personal, nombres + ' ' + apellidos as operador from personal where tipo_usuario='Operario' and estado='Activo' order by nombres"
+        Try
+            Return objMan.listarComando(strCon)
+        Catch ex As Exception
+            Throw New Exception("Error al listar operarios!")
+        End Try
+    End Function
 End Class

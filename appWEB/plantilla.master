@@ -60,11 +60,6 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Button ID="btnMModificar" runat="server" CssClass="estiloBotonMenu" Text="Modificar contraseña" Width="100%" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
                                 <asp:Button ID="btnMIniciarSesion" runat="server" CssClass="estiloBotonMenu" Text="Iniciar sesión" Width="100%" />
                             </td>
                         </tr>

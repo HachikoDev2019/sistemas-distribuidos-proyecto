@@ -33,23 +33,14 @@
             </td>
         </tr>
         <tr>
-            <td class="estiloEtiqueta">DNI:</td>
+            <td class="estiloEtiqueta">Operador:</td>
             <td>
-                <asp:TextBox ID="txtDni" runat="server" CssClass="estiloCaja" MaxLength="8"></asp:TextBox>
+                <asp:DropDownList ID="ddlOperador" runat="server" CssClass="estiloCaja">
+                </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
             <td>
                 <asp:Button ID="btnEliminar" runat="server" CssClass="estiloBotonRojo" Text="Eliminar" Width="140px" />
-            </td>
-        </tr>
-        <tr>
-            <td class="estiloEtiqueta">Personal:</td>
-            <td>
-                <asp:TextBox ID="txtPersonal" runat="server" CssClass="estiloCaja" ReadOnly="True"></asp:TextBox>
-            </td>
-            <td>&nbsp;</td>
-            <td>
-                <asp:Button ID="btnFinalizar" runat="server" CssClass="estiloBoton" Text="Finalizar" Width="140px" />
             </td>
         </tr>
         <tr>
@@ -62,7 +53,9 @@
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td>
+                <asp:Button ID="btnFinalizar" runat="server" CssClass="estiloBoton" Text="Finalizar" Width="140px" />
+            </td>
         </tr>
         <tr>
             <td class="estiloEtiqueta">Combustible inicial:</td>

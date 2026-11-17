@@ -13,6 +13,10 @@ Partial Class wfActividad
                 ddlMaquina.DataTextField = "maquina"
                 ddlMaquina.DataValueField = "id_maquinaria"
                 ddlMaquina.DataBind()
+                ddlOperador.DataSource = objPersonal.listarOperariosCombo
+                ddlOperador.DataTextField = "operador"
+                ddlOperador.DataValueField = "id_personal"
+                ddlOperador.DataBind()
             Catch ex As Exception
                 lblMensaje.Text = ex.Message
             End Try
@@ -30,7 +34,6 @@ Partial Class wfActividad
     End Sub
 
     Protected Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
-        Dim dtPer As New DataTable
         Try
             If btnNuevo.Text.Equals("Nuevo") Then
                 limpiarControles()
@@ -39,21 +42,10 @@ Partial Class wfActividad
                 ddlMaquina.Focus()
             Else
                 btnNuevo.Text = "Nuevo"
-                If txtDni.Text <> "" Then
-                    dtPer = objPersonal.buscarPersonal(txtDni.Text)
-                    If dtPer.Rows.Count > 0 Then
-                        objActividad.registrarActividad(CInt(ddlMaquina.SelectedValue), CInt(dtPer.Rows(0).Item(0)), ddlZona.Text, ddlCombustibleInicial.SelectedValue, txtHorasEstimadas.Text)
-                        lblMensaje.Text = "Actividad registrada correctamente!"
-                        limpiarControles()
-                        listarActividad()
-                    Else
-                        lblMensaje.Text = "DNI no está registrado!"
-                        txtDni.Focus()
-                    End If
-                Else
-                    lblMensaje.Text = "Ingrese DNI del operador!"
-                    txtDni.Focus()
-                End If
+                objActividad.registrarActividad(CInt(ddlMaquina.SelectedValue), CInt(ddlOperador.SelectedValue), ddlZona.Text, ddlCombustibleInicial.SelectedValue, txtHorasEstimadas.Text)
+                lblMensaje.Text = "Actividad registrada correctamente!"
+                limpiarControles()
+                listarActividad()
             End If
         Catch ex As Exception
             lblMensaje.Text = ex.Message
@@ -62,8 +54,6 @@ Partial Class wfActividad
 
     Private Sub limpiarControles()
         txtId .Text =""
-        txtDni .Text =""
-        txtPersonal .Text =""
         ddlCombustibleFinal.SelectedValue = ""
         txtHorasEstimadas .Text =""
         txtHorasReales .Text =""
@@ -117,8 +107,7 @@ Partial Class wfActividad
                 If dtAct.Rows.Count > 0 Then
                     txtId.Text = dtAct.Rows(0).Item(0)
                     ddlMaquina.SelectedValue = dtAct.Rows(0).Item(1).ToString()
-                    txtDni.Text = dtAct.Rows(0).Item(4)
-                    txtPersonal.Text = dtAct.Rows(0).Item(5)
+                    ddlOperador.SelectedValue = dtAct.Rows(0).Item(3).ToString()
                     ddlZona.Text = dtAct.Rows(0).Item(6)
                     If dtAct.Rows(0).Item(7).ToString() <> "" Then ddlCombustibleInicial.SelectedValue = CInt(dtAct.Rows(0).Item(7)).ToString()
                     If dtAct.Rows(0).Item(8).ToString() <> "" Then ddlCombustibleFinal.SelectedValue = CInt(dtAct.Rows(0).Item(8)).ToString() Else ddlCombustibleFinal.SelectedValue = ""
