@@ -45,6 +45,21 @@
                         </tr>
                         <tr>
                             <td>
+                                <asp:Button ID="btnMMaquinaria" runat="server" CssClass="estiloBotonMenu" Text="Gestionar maquinaria" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMSolicitudes" runat="server" CssClass="estiloBotonMenu" Text="Solicitudes" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMActividad" runat="server" CssClass="estiloBotonMenu" Text="Actividad" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <asp:Button ID="btnMModificar" runat="server" CssClass="estiloBotonMenu" Text="Modificar contraseña" Width="100%" />
                             </td>
                         </tr>
