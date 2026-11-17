@@ -42,6 +42,15 @@
             </td>
         </tr>
         <tr>
+            <td class="estiloEtiqueta">Máquina:</td>
+            <td>
+                <asp:DropDownList ID="ddlMaquina" runat="server" CssClass="estiloCaja">
+                </asp:DropDownList>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
             <td class="estiloEtiqueta">Descripción:</td>
             <td>
                 <asp:TextBox ID="txtDescripcion" runat="server" CssClass="estiloCaja" TextMode="MultiLine" Rows="3"></asp:TextBox>
@@ -57,6 +66,9 @@
                     <asp:ListItem>Fábrica</asp:ListItem>
                     <asp:ListItem>Logística</asp:ListItem>
                     <asp:ListItem>Mantenimiento</asp:ListItem>
+                    <asp:ListItem>Administración</asp:ListItem>
+                    <asp:ListItem>Recursos humanos</asp:ListItem>
+                    <asp:ListItem>Sistemas</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>

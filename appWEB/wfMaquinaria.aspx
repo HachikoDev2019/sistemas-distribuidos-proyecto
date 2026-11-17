@@ -67,6 +67,9 @@
                     <asp:ListItem>Fábrica</asp:ListItem>
                     <asp:ListItem>Logística</asp:ListItem>
                     <asp:ListItem>Mantenimiento</asp:ListItem>
+                    <asp:ListItem>Administración</asp:ListItem>
+                    <asp:ListItem>Recursos humanos</asp:ListItem>
+                    <asp:ListItem>Sistemas</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
@@ -78,7 +81,8 @@
                 <asp:DropDownList ID="ddlEstado" runat="server" CssClass="estiloCaja">
                     <asp:ListItem>Operativo</asp:ListItem>
                     <asp:ListItem>En Mantenimiento</asp:ListItem>
-                    <asp:ListItem>Inactivo</asp:ListItem>
+                    <asp:ListItem>Sin Tarea</asp:ListItem>
+                    <asp:ListItem>Dado de Baja</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>

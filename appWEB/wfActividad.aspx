@@ -24,7 +24,8 @@
         <tr>
             <td class="estiloEtiqueta">Código máquina:</td>
             <td>
-                <asp:TextBox ID="txtCodigo" runat="server" CssClass="estiloCaja"></asp:TextBox>
+                <asp:DropDownList ID="ddlMaquina" runat="server" CssClass="estiloCaja">
+                </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
             <td>
@@ -54,7 +55,11 @@
         <tr>
             <td class="estiloEtiqueta">Zona:</td>
             <td>
-                <asp:TextBox ID="txtZona" runat="server" CssClass="estiloCaja"></asp:TextBox>
+                <asp:DropDownList ID="ddlZona" runat="server" CssClass="estiloCaja">
+                    <asp:ListItem>Anexo Pampagrande</asp:ListItem>
+                    <asp:ListItem>Anexo Saltur</asp:ListItem>
+                    <asp:ListItem>Sipán Lote 4</asp:ListItem>
+                </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -62,7 +67,13 @@
         <tr>
             <td class="estiloEtiqueta">Combustible inicial:</td>
             <td>
-                <asp:TextBox ID="txtCombustibleInicial" runat="server" CssClass="estiloCaja"></asp:TextBox>
+                <asp:DropDownList ID="ddlCombustibleInicial" runat="server" CssClass="estiloCaja">
+                    <asp:ListItem Value="100">100%</asp:ListItem>
+                    <asp:ListItem Value="75">75%</asp:ListItem>
+                    <asp:ListItem Value="50">50%</asp:ListItem>
+                    <asp:ListItem Value="25">25%</asp:ListItem>
+                    <asp:ListItem Value="10">Reserva</asp:ListItem>
+                </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -70,7 +81,14 @@
         <tr>
             <td class="estiloEtiqueta">Combustible final:</td>
             <td>
-                <asp:TextBox ID="txtCombustibleFinal" runat="server" CssClass="estiloCaja"></asp:TextBox>
+                <asp:DropDownList ID="ddlCombustibleFinal" runat="server" CssClass="estiloCaja">
+                    <asp:ListItem Value="">(Sin registrar)</asp:ListItem>
+                    <asp:ListItem Value="100">100%</asp:ListItem>
+                    <asp:ListItem Value="75">75%</asp:ListItem>
+                    <asp:ListItem Value="50">50%</asp:ListItem>
+                    <asp:ListItem Value="25">25%</asp:ListItem>
+                    <asp:ListItem Value="10">Reserva</asp:ListItem>
+                </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>

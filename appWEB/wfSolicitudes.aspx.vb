@@ -4,8 +4,19 @@ Partial Class wfSolicitudes
     Inherits System.Web.UI.Page
     Dim objSolicitud As New clsSolicitud
     Dim objPersonal As New clsPersonal
+    Dim objMaquinaria As New clsMaquinaria
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If Not IsPostBack Then
+            Try
+                ddlMaquina.DataSource = objMaquinaria.listarMaquinasCombo
+                ddlMaquina.DataTextField = "maquina"
+                ddlMaquina.DataValueField = "id_maquinaria"
+                ddlMaquina.DataBind()
+            Catch ex As Exception
+                lblMensaje.Text = ex.Message
+            End Try
+        End If
         listarSolicitudes
     End Sub
 
@@ -31,7 +42,7 @@ Partial Class wfSolicitudes
                 If txtDni.Text <> "" Then
                     dtPer = objPersonal.buscarPersonal(txtDni.Text)
                     If dtPer.Rows.Count > 0 Then
-                        objSolicitud.registrarSolicitud(CInt(dtPer.Rows(0).Item(0)), txtDescripcion.Text, ddlArea.Text, ddlPrioridad.Text)
+                        objSolicitud.registrarSolicitud(CInt(dtPer.Rows(0).Item(0)), CInt(ddlMaquina.SelectedValue), txtDescripcion.Text, ddlArea.Text, ddlPrioridad.Text)
                         lblMensaje.Text = "Solicitud registrada correctamente!"
                         limpiarControles()
                         listarSolicitudes()
@@ -59,7 +70,7 @@ Partial Class wfSolicitudes
 
     Protected Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
-            objSolicitud.modificarSolicitud(CInt(txtId.Text), txtDescripcion.Text, ddlArea.Text, ddlPrioridad.Text, ddlEstado.Text, txtComentario.Text)
+            objSolicitud.modificarSolicitud(CInt(txtId.Text), CInt(ddlMaquina.SelectedValue), txtDescripcion.Text, ddlArea.Text, ddlPrioridad.Text, ddlEstado.Text, txtComentario.Text)
             lblMensaje.Text = "Solicitud modificada correctamente!"
             limpiarControles()
             listarSolicitudes()
@@ -98,6 +109,7 @@ Partial Class wfSolicitudes
                     ddlPrioridad.Text = dtSol.Rows(0).Item(6)
                     ddlEstado.Text = dtSol.Rows(0).Item(7)
                     txtComentario.Text = dtSol.Rows(0).Item(8).ToString()
+                    If dtSol.Rows(0).Item(9).ToString() <> "" Then ddlMaquina.SelectedValue = dtSol.Rows(0).Item(9).ToString()
                 Else
                     lblMensaje.Text = "ID no está registrado!"
                     limpiarControles()

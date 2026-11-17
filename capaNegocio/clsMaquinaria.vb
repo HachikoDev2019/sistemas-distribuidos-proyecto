@@ -43,7 +43,7 @@ Public Class clsMaquinaria
     End Sub
 
     Public Sub darBajaMaquinaria(id As Integer)
-        strCon = "update maquinaria set estado='Inactivo' where id_maquinaria=" & id
+        strCon = "update maquinaria set estado='Dado de Baja' where id_maquinaria=" & id
         Try
             objMan.ejecutarComando(strCon)
         Catch ex As Exception
@@ -66,6 +66,15 @@ Public Class clsMaquinaria
             Return objMan.listarComando(strCon)
         Catch ex As Exception
             Throw New Exception("Error al listar la maquinaria!")
+        End Try
+    End Function
+
+    Public Function listarMaquinasCombo() As DataTable
+        strCon = "select id_maquinaria, nombre_codigo + ' - ' + tipo as maquina from maquinaria where estado<>'Dado de Baja' order by nombre_codigo"
+        Try
+            Return objMan.listarComando(strCon)
+        Catch ex As Exception
+            Throw New Exception("Error al listar las máquinas!")
         End Try
     End Function
 End Class

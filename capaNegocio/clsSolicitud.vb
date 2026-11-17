@@ -15,8 +15,8 @@ Public Class clsSolicitud
         End Try
     End Function
 
-    Public Sub registrarSolicitud(idPersonal As Integer, descripcion As String, area As String, prioridad As String)
-        strCon = "insert into solicitudes (id_personal, descripcion, area, prioridad, estado) values(" & idPersonal & ",'" & descripcion & "','" & area & "','" & prioridad & "','Pendiente')"
+    Public Sub registrarSolicitud(idPersonal As Integer, idMaquinaria As Integer, descripcion As String, area As String, prioridad As String)
+        strCon = "insert into solicitudes (id_personal, id_maquinaria, descripcion, area, prioridad, estado) values(" & idPersonal & "," & idMaquinaria & ",'" & descripcion & "','" & area & "','" & prioridad & "','Pendiente')"
         Try
             objMan.ejecutarComando(strCon)
         Catch ex As Exception
@@ -24,8 +24,8 @@ Public Class clsSolicitud
         End Try
     End Sub
 
-    Public Sub modificarSolicitud(id As Integer, descripcion As String, area As String, prioridad As String, estado As String, comentario As String)
-        strCon = "update solicitudes set descripcion='" & descripcion & "', area='" & area & "', prioridad='" & prioridad & "', estado='" & estado & "', comentario='" & comentario & "' where id_solicitud=" & id
+    Public Sub modificarSolicitud(id As Integer, idMaquinaria As Integer, descripcion As String, area As String, prioridad As String, estado As String, comentario As String)
+        strCon = "update solicitudes set id_maquinaria=" & idMaquinaria & ", descripcion='" & descripcion & "', area='" & area & "', prioridad='" & prioridad & "', estado='" & estado & "', comentario='" & comentario & "' where id_solicitud=" & id
         Try
             objMan.ejecutarComando(strCon)
         Catch ex As Exception
@@ -43,7 +43,7 @@ Public Class clsSolicitud
     End Sub
 
     Public Function buscarSolicitud(id As Integer) As DataTable
-        strCon = "select s.id_solicitud, s.id_personal, p.dni, p.nombres + ' ' + p.apellidos, s.descripcion, s.area, s.prioridad, s.estado, s.comentario from solicitudes s inner join personal p on s.id_personal = p.id_personal where s.id_solicitud=" & id
+        strCon = "select s.id_solicitud, s.id_personal, p.dni, p.nombres + ' ' + p.apellidos, s.descripcion, s.area, s.prioridad, s.estado, s.comentario, s.id_maquinaria from solicitudes s inner join personal p on s.id_personal = p.id_personal where s.id_solicitud=" & id
         Try
             Return objMan.listarComando(strCon)
         Catch ex As Exception
@@ -52,7 +52,7 @@ Public Class clsSolicitud
     End Function
 
     Public Function listarSolicitudes() As DataTable
-        strCon = "select s.id_solicitud as ID, p.nombres + ' ' + p.apellidos as Solicitante, s.descripcion as Descripcion, s.area as Area, s.prioridad as Prioridad, s.estado as Estado, convert(varchar(10), s.fecha_registro, 103) as Fecha from solicitudes s inner join personal p on s.id_personal = p.id_personal order by s.id_solicitud desc"
+        strCon = "select s.id_solicitud as ID, p.nombres + ' ' + p.apellidos as Solicitante, m.nombre_codigo as Maquina, s.descripcion as Descripcion, s.area as Area, s.prioridad as Prioridad, s.estado as Estado, convert(varchar(10), s.fecha_registro, 103) as Fecha from solicitudes s inner join personal p on s.id_personal = p.id_personal left join maquinaria m on s.id_maquinaria = m.id_maquinaria order by s.id_solicitud desc"
         Try
             Return objMan.listarComando(strCon)
         Catch ex As Exception

@@ -7,6 +7,16 @@ Partial Class wfActividad
     Dim objPersonal As New clsPersonal
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If Not IsPostBack Then
+            Try
+                ddlMaquina.DataSource = objMaquinaria.listarMaquinasCombo
+                ddlMaquina.DataTextField = "maquina"
+                ddlMaquina.DataValueField = "id_maquinaria"
+                ddlMaquina.DataBind()
+            Catch ex As Exception
+                lblMensaje.Text = ex.Message
+            End Try
+        End If
         listarActividad
     End Sub
 
@@ -20,35 +30,29 @@ Partial Class wfActividad
     End Sub
 
     Protected Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
-        Dim dtMaq As New DataTable
         Dim dtPer As New DataTable
         Try
             If btnNuevo.Text.Equals("Nuevo") Then
                 limpiarControles()
                 btnNuevo.Text = "Guardar"
                 txtId.Text = objActividad.generarIDActividad
-                txtCodigo.Focus()
+                ddlMaquina.Focus()
             Else
                 btnNuevo.Text = "Nuevo"
-                If txtCodigo.Text <> "" And txtDni.Text <> "" Then
-                    dtMaq = objMaquinaria.buscarMaquinaria(txtCodigo.Text)
+                If txtDni.Text <> "" Then
                     dtPer = objPersonal.buscarPersonal(txtDni.Text)
-                    If dtMaq.Rows.Count > 0 Then
-                        If dtPer.Rows.Count > 0 Then
-                            objActividad.registrarActividad(CInt(dtMaq.Rows(0).Item(0)), CInt(dtPer.Rows(0).Item(0)), txtZona.Text, txtCombustibleInicial.Text, txtHorasEstimadas.Text)
-                            lblMensaje.Text = "Actividad registrada correctamente!"
-                            limpiarControles()
-                            listarActividad()
-                        Else
-                            lblMensaje.Text = "DNI no está registrado!"
-                            txtDni.Focus()
-                        End If
+                    If dtPer.Rows.Count > 0 Then
+                        objActividad.registrarActividad(CInt(ddlMaquina.SelectedValue), CInt(dtPer.Rows(0).Item(0)), ddlZona.Text, ddlCombustibleInicial.SelectedValue, txtHorasEstimadas.Text)
+                        lblMensaje.Text = "Actividad registrada correctamente!"
+                        limpiarControles()
+                        listarActividad()
                     Else
-                        lblMensaje.Text = "Código no está registrado!"
-                        txtCodigo.Focus()
+                        lblMensaje.Text = "DNI no está registrado!"
+                        txtDni.Focus()
                     End If
                 Else
-                    lblMensaje.Text = "Ingrese código de máquina y DNI!"
+                    lblMensaje.Text = "Ingrese DNI del operador!"
+                    txtDni.Focus()
                 End If
             End If
         Catch ex As Exception
@@ -58,12 +62,9 @@ Partial Class wfActividad
 
     Private Sub limpiarControles()
         txtId .Text =""
-        txtCodigo .Text =""
         txtDni .Text =""
         txtPersonal .Text =""
-        txtZona .Text =""
-        txtCombustibleInicial .Text =""
-        txtCombustibleFinal .Text =""
+        ddlCombustibleFinal.SelectedValue = ""
         txtHorasEstimadas .Text =""
         txtHorasReales .Text =""
         txtMotivoRetraso .Text =""
@@ -72,7 +73,7 @@ Partial Class wfActividad
 
     Protected Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
-            objActividad.modificarActividad(CInt(txtId.Text), txtZona.Text, txtCombustibleInicial.Text, txtCombustibleFinal.Text, txtHorasEstimadas.Text, txtHorasReales.Text, txtMotivoRetraso.Text, txtObservacionFalla.Text, ddlEstado.Text)
+            objActividad.modificarActividad(CInt(txtId.Text), ddlZona.Text, ddlCombustibleInicial.SelectedValue, ddlCombustibleFinal.SelectedValue, txtHorasEstimadas.Text, txtHorasReales.Text, txtMotivoRetraso.Text, txtObservacionFalla.Text, ddlEstado.Text)
             lblMensaje.Text = "Actividad modificada correctamente!"
             limpiarControles()
             listarActividad()
@@ -94,7 +95,7 @@ Partial Class wfActividad
 
     Protected Sub btnFinalizar_Click(sender As Object, e As EventArgs) Handles btnFinalizar.Click
         Try
-            objActividad.finalizarActividad(CInt(txtId.Text), txtCombustibleFinal.Text, txtHorasReales.Text, txtMotivoRetraso.Text)
+            objActividad.finalizarActividad(CInt(txtId.Text), ddlCombustibleFinal.SelectedValue, txtHorasReales.Text, txtMotivoRetraso.Text)
             lblMensaje.Text = "Actividad finalizada correctamente!"
             limpiarControles()
             listarActividad()
@@ -115,12 +116,12 @@ Partial Class wfActividad
                 dtAct = objActividad.buscarActividad(CInt(txtId.Text))
                 If dtAct.Rows.Count > 0 Then
                     txtId.Text = dtAct.Rows(0).Item(0)
-                    txtCodigo.Text = dtAct.Rows(0).Item(2)
+                    ddlMaquina.SelectedValue = dtAct.Rows(0).Item(1).ToString()
                     txtDni.Text = dtAct.Rows(0).Item(4)
                     txtPersonal.Text = dtAct.Rows(0).Item(5)
-                    txtZona.Text = dtAct.Rows(0).Item(6)
-                    txtCombustibleInicial.Text = dtAct.Rows(0).Item(7).ToString()
-                    txtCombustibleFinal.Text = dtAct.Rows(0).Item(8).ToString()
+                    ddlZona.Text = dtAct.Rows(0).Item(6)
+                    If dtAct.Rows(0).Item(7).ToString() <> "" Then ddlCombustibleInicial.SelectedValue = CInt(dtAct.Rows(0).Item(7)).ToString()
+                    If dtAct.Rows(0).Item(8).ToString() <> "" Then ddlCombustibleFinal.SelectedValue = CInt(dtAct.Rows(0).Item(8)).ToString() Else ddlCombustibleFinal.SelectedValue = ""
                     txtHorasEstimadas.Text = dtAct.Rows(0).Item(9).ToString()
                     txtHorasReales.Text = dtAct.Rows(0).Item(10).ToString()
                     txtMotivoRetraso.Text = dtAct.Rows(0).Item(11).ToString()
