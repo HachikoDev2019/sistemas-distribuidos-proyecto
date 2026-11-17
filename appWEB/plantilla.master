@@ -21,6 +21,8 @@
                                 Sistema de Gestión de Maquinaria Agrícola
                             </td>
                             <td style="text-align: right">
+                                <asp:Label ID="lblUsuario" runat="server"></asp:Label>
+                                &nbsp;
                                 <asp:Button ID="btnMCerrarSesion" runat="server" CssClass="estiloBotonMenu" Text="Cerrar sesión" />
                             </td>
                         </tr>

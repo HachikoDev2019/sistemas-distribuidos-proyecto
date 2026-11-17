@@ -5,6 +5,9 @@ Partial Class wfMaquinaria
     Dim objMaquinaria As New clsMaquinaria
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If Session("tipo") <> "Administrador" And Session("tipo") <> "Supervisor" Then
+            Response.Redirect("wfInicio.aspx")
+        End If
         listarMaquinaria
     End Sub
 

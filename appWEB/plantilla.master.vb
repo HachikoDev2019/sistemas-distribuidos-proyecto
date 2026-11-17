@@ -2,6 +2,23 @@
 Partial Class plantilla
     Inherits System.Web.UI.MasterPage
 
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If Session("tipo") Is Nothing Then
+            Response.Redirect("wfLogin.aspx")
+        End If
+        lblUsuario.Text = Session("nombre") & " (" & Session("tipo") & ")"
+        aplicarPermisos()
+    End Sub
+
+    Private Sub aplicarPermisos()
+        Dim tipo As String = Session("tipo")
+        btnMPersonal.Visible = (tipo = "Administrador")
+        btnMMaquinaria.Visible = (tipo = "Administrador" Or tipo = "Supervisor")
+        btnMSolicitudes.Visible = True
+        btnMActividad.Visible = True
+        btnMIniciarSesion.Visible = False
+    End Sub
+
     Protected Sub btnMInicio_Click(sender As Object, e As EventArgs) Handles btnMInicio.Click
         Response.Redirect("wfInicio.aspx")
     End Sub
@@ -11,6 +28,7 @@ Partial Class plantilla
     End Sub
 
     Protected Sub btnMCerrarSesion_Click(sender As Object, e As EventArgs) Handles btnMCerrarSesion.Click
+        Session.Abandon()
         Response.Redirect("wfLogin.aspx")
     End Sub
 

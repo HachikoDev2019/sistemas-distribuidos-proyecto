@@ -5,6 +5,9 @@ Partial Class wfPersonal
     Dim objPersonal As New clsPersonal
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If Session("tipo") <> "Administrador" Then
+            Response.Redirect("wfInicio.aspx")
+        End If
         listarPersonal
     End Sub
 

@@ -1,4 +1,5 @@
-﻿Imports capaNegocio
+﻿Imports System.Data
+Imports capaNegocio
 
 Partial Class wfLogin
     Inherits System.Web.UI.Page
@@ -10,6 +11,11 @@ Partial Class wfLogin
                 If objPersonal.validarDNI(txtDni.Text) Then
                     If objPersonal.iniciarSesion(txtDni.Text, txtContraseña.Text) Then
                         'lblMensaje.Text = "Bienvenido al Sistema!"
+                        Dim dtUsu As New DataTable
+                        dtUsu = objPersonal.buscarPersonal(txtDni.Text)
+                        Session("dni") = txtDni.Text
+                        Session("nombre") = dtUsu.Rows(0).Item(2) & " " & dtUsu.Rows(0).Item(3)
+                        Session("tipo") = dtUsu.Rows(0).Item(7)
                         Response.Redirect("wfInicio.aspx")
                     Else
                         lblMensaje.Text = "Contraseña incorrecta, intente nuevamente!"
