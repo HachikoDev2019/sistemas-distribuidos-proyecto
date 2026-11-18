@@ -13,6 +13,10 @@ Partial Class wfSolicitudes
                 ddlMaquina.DataTextField = "maquina"
                 ddlMaquina.DataValueField = "id_maquinaria"
                 ddlMaquina.DataBind()
+                ddlSolicitante.DataSource = objPersonal.listarPersonalCombo
+                ddlSolicitante.DataTextField = "persona"
+                ddlSolicitante.DataValueField = "id_personal"
+                ddlSolicitante.DataBind()
             Catch ex As Exception
                 lblMensaje.Text = ex.Message
             End Try
@@ -30,30 +34,18 @@ Partial Class wfSolicitudes
     End Sub
 
     Protected Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
-        Dim dtPer As New DataTable
         Try
             If btnNuevo.Text.Equals("Nuevo") Then
                 limpiarControles()
                 btnNuevo.Text = "Guardar"
                 txtId.Text = objSolicitud.generarIDSolicitud
-                txtDni.Focus()
+                ddlSolicitante.Focus()
             Else
                 btnNuevo.Text = "Nuevo"
-                If txtDni.Text <> "" Then
-                    dtPer = objPersonal.buscarPersonal(txtDni.Text)
-                    If dtPer.Rows.Count > 0 Then
-                        objSolicitud.registrarSolicitud(CInt(dtPer.Rows(0).Item(0)), CInt(ddlMaquina.SelectedValue), txtDescripcion.Text, ddlArea.Text, ddlPrioridad.Text)
-                        lblMensaje.Text = "Solicitud registrada correctamente!"
-                        limpiarControles()
-                        listarSolicitudes()
-                    Else
-                        lblMensaje.Text = "DNI no está registrado!"
-                        txtDni.Focus()
-                    End If
-                Else
-                    lblMensaje.Text = "Ingrese DNI del solicitante!"
-                    txtDni.Focus()
-                End If
+                objSolicitud.registrarSolicitud(CInt(ddlSolicitante.SelectedValue), CInt(ddlMaquina.SelectedValue), txtDescripcion.Text, ddlArea.Text, ddlPrioridad.Text)
+                lblMensaje.Text = "Solicitud registrada correctamente!"
+                limpiarControles()
+                listarSolicitudes()
             End If
         Catch ex As Exception
             lblMensaje.Text = ex.Message
@@ -62,8 +54,6 @@ Partial Class wfSolicitudes
 
     Private Sub limpiarControles()
         txtId .Text =""
-        txtDni .Text =""
-        txtSolicitante .Text =""
         txtDescripcion .Text =""
         txtComentario.Text = ""
     End Sub
@@ -102,8 +92,7 @@ Partial Class wfSolicitudes
                 dtSol = objSolicitud.buscarSolicitud(CInt(txtId.Text))
                 If dtSol.Rows.Count > 0 Then
                     txtId.Text = dtSol.Rows(0).Item(0)
-                    txtDni.Text = dtSol.Rows(0).Item(2)
-                    txtSolicitante.Text = dtSol.Rows(0).Item(3)
+                    ddlSolicitante.SelectedValue = dtSol.Rows(0).Item(1).ToString()
                     txtDescripcion.Text = dtSol.Rows(0).Item(4)
                     ddlArea.Text = dtSol.Rows(0).Item(5)
                     ddlPrioridad.Text = dtSol.Rows(0).Item(6)

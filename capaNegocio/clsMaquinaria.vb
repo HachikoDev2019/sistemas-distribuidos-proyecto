@@ -38,7 +38,7 @@ Public Class clsMaquinaria
         Try
             objMan.ejecutarComando(strCon)
         Catch ex As Exception
-            Throw New Exception("Error al eliminar maquinaria!")
+            Throw New Exception("No se puede eliminar: la máquina tiene solicitudes o actividades registradas. Use Dar de Baja.")
         End Try
     End Sub
 

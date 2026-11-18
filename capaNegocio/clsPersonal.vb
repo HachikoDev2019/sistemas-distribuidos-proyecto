@@ -66,7 +66,7 @@ Public Class clsPersonal
         Try
             objMan.ejecutarComando(strCon)
         Catch ex As Exception
-            Throw New Exception("Error al eliminar personal!")
+            Throw New Exception("No se puede eliminar: el personal tiene solicitudes o actividades registradas. Use Dar de Baja.")
         End Try
     End Sub
 
@@ -103,6 +103,15 @@ Public Class clsPersonal
             Return objMan.listarComando(strCon)
         Catch ex As Exception
             Throw New Exception("Error al listar operarios!")
+        End Try
+    End Function
+
+    Public Function listarPersonalCombo() As DataTable
+        strCon = "select id_personal, nombres + ' ' + apellidos as persona from personal where estado='Activo' order by nombres"
+        Try
+            Return objMan.listarComando(strCon)
+        Catch ex As Exception
+            Throw New Exception("Error al listar el personal!")
         End Try
     End Function
 End Class

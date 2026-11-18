@@ -109,7 +109,7 @@
         <tr>
             <td class="estiloEtiqueta">Vigencia:</td>
             <td>
-                <asp:CheckBox ID="chkVigencia" runat="server" Text="(Vigente)" />
+                <asp:CheckBox ID="chkVigencia" runat="server" Text="(Vigente)" Checked="True" />
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>

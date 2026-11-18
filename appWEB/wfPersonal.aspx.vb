@@ -47,6 +47,7 @@ Partial Class wfPersonal
         txtNombres .Text =""
         txtApellidos .Text =""
         txtTelefono.Text = ""
+        chkVigencia.Checked = True
     End Sub
 
     Protected Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click

@@ -22,6 +22,7 @@ Public Class clsMantenimiento
             objConecta.cerrarconexion()
         Catch ex As Exception
             'objConecta.cancelarconexionTrans()
+            objConecta.cerrarconexion()
             Throw New Exception("Error al realizar la operación...")
         End Try
     End Sub
@@ -43,6 +44,7 @@ Public Class clsMantenimiento
             Return dt
         Catch ex As Exception
             objConecta.cancelarconexionTrans()
+            objConecta.cerrarconexion()
             Throw New Exception("Error al realizar la consulta...")
         End Try
         Return Nothing

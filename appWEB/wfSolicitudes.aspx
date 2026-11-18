@@ -22,23 +22,14 @@
             </td>
         </tr>
         <tr>
-            <td class="estiloEtiqueta">DNI:</td>
+            <td class="estiloEtiqueta">Solicitante:</td>
             <td>
-                <asp:TextBox ID="txtDni" runat="server" CssClass="estiloCaja" MaxLength="8"></asp:TextBox>
+                <asp:DropDownList ID="ddlSolicitante" runat="server" CssClass="estiloCaja">
+                </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
             <td>
                 <asp:Button ID="btnModificar" runat="server" CssClass="estiloBoton" Text="Modificar" Width="140px" />
-            </td>
-        </tr>
-        <tr>
-            <td class="estiloEtiqueta">Solicitante:</td>
-            <td>
-                <asp:TextBox ID="txtSolicitante" runat="server" CssClass="estiloCaja" ReadOnly="True"></asp:TextBox>
-            </td>
-            <td>&nbsp;</td>
-            <td>
-                <asp:Button ID="btnEliminar" runat="server" CssClass="estiloBotonRojo" Text="Eliminar" Width="140px" />
             </td>
         </tr>
         <tr>
@@ -48,7 +39,9 @@
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td>
+                <asp:Button ID="btnEliminar" runat="server" CssClass="estiloBotonRojo" Text="Eliminar" Width="140px" />
+            </td>
         </tr>
         <tr>
             <td class="estiloEtiqueta">Descripción:</td>

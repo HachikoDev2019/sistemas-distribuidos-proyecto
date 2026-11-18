@@ -21,7 +21,7 @@ Public Class clsConectaBD
         'BD en la nube somee.com
         'cn.ConnectionString = "workstation id=BDPersonal2024.mssql.somee.com;packet size=4096;user id=cdelcastillo_SQLLogin_1;pwd=wptf98uw6j;data source=BDPersonal2024.mssql.somee.com;persist security info=False;initial catalog=BDPersonal2024;language=spanish"
         cn.ConnectionString = "workstation id=bdpryDistribuidos.mssql.somee.com;packet size=4096;user id=angelli_cr_SQLLogin_1;pwd=ljrle6ytlk;data source=bdpryDistribuidos.mssql.somee.com;persist security info=False;initial catalog=bdpryDistribuidos;language=spanish"
-        cn.Open()
+        'cn.Open() ' Se abre en abrirconexion y se cierra en cerrarconexion
 
     End Sub
 
