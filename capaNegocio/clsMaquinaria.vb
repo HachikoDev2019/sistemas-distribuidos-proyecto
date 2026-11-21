@@ -77,4 +77,22 @@ Public Class clsMaquinaria
             Throw New Exception("Error al listar las máquinas!")
         End Try
     End Function
+
+    Public Function listarMaquinasDisponibles() As DataTable
+        strCon = "select m.id_maquinaria, m.nombre_codigo + ' - ' + m.tipo as maquina from maquinaria m where (m.estado='Operativo' or m.estado='Sin Tarea') and not exists (select 1 from actividad_maquinaria a where a.id_maquinaria = m.id_maquinaria and a.estado='ACTIVO') order by m.nombre_codigo"
+        Try
+            Return objMan.listarComando(strCon)
+        Catch ex As Exception
+            Throw New Exception("Error al listar las máquinas disponibles!")
+        End Try
+    End Function
+
+    Public Function listarMaquinasEnMantenimiento() As DataTable
+        strCon = "select id_maquinaria, nombre_codigo + ' - ' + tipo as maquina from maquinaria where estado='En Mantenimiento' order by nombre_codigo"
+        Try
+            Return objMan.listarComando(strCon)
+        Catch ex As Exception
+            Throw New Exception("Error al listar las máquinas en mantenimiento!")
+        End Try
+    End Function
 End Class

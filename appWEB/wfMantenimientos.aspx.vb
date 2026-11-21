@@ -11,15 +11,19 @@ Partial Class wfMantenimientos
         End If
         If Not IsPostBack Then
             Try
-                ddlMaquina.DataSource = objMaquinaria.listarMaquinasCombo
-                ddlMaquina.DataTextField = "maquina"
-                ddlMaquina.DataValueField = "id_maquinaria"
-                ddlMaquina.DataBind()
+                cargarMaquinas()
             Catch ex As Exception
                 lblMensaje.Text = ex.Message
             End Try
         End If
         listarMantenimientos
+    End Sub
+
+    Private Sub cargarMaquinas()
+        ddlMaquina.DataSource = objMaquinaria.listarMaquinasEnMantenimiento
+        ddlMaquina.DataTextField = "maquina"
+        ddlMaquina.DataValueField = "id_maquinaria"
+        ddlMaquina.DataBind()
     End Sub
 
     Private Sub listarMantenimientos()
@@ -39,7 +43,9 @@ Partial Class wfMantenimientos
                 txtId.Text = objMantenimiento.generarIDMantenimiento
                 ddlMaquina.Focus()
             Else
-                If txtFecha.Text = "" Then
+                If ddlMaquina.Items.Count = 0 Then
+                    lblMensaje.Text = "No hay máquinas en mantenimiento. Apruebe una solicitud o cambie el estado en Gestionar maquinaria."
+                ElseIf txtFecha.Text = "" Then
                     lblMensaje.Text = "Ingrese la fecha!"
                 Else
                     btnNuevo.Text = "Nuevo"
@@ -47,6 +53,7 @@ Partial Class wfMantenimientos
                     lblMensaje.Text = "Mantenimiento registrado correctamente!"
                     limpiarControles()
                     listarMantenimientos()
+                    cargarMaquinas()
                 End If
             End If
         Catch ex As Exception
@@ -100,6 +107,9 @@ Partial Class wfMantenimientos
                 dtMan = objMantenimiento.buscarMantenimiento(CInt(txtId.Text))
                 If dtMan.Rows.Count > 0 Then
                     txtId.Text = dtMan.Rows(0).Item(0)
+                    If ddlMaquina.Items.FindByValue(dtMan.Rows(0).Item(1).ToString()) Is Nothing Then
+                        ddlMaquina.Items.Add(New ListItem(dtMan.Rows(0).Item(7).ToString(), dtMan.Rows(0).Item(1).ToString()))
+                    End If
                     ddlMaquina.SelectedValue = dtMan.Rows(0).Item(1).ToString()
                     ddlTipo.Text = dtMan.Rows(0).Item(2)
                     txtFecha.Text = dtMan.Rows(0).Item(3)

@@ -10,10 +10,7 @@ Partial Class wfActividad
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
             Try
-                ddlMaquina.DataSource = objMaquinaria.listarMaquinasCombo
-                ddlMaquina.DataTextField = "maquina"
-                ddlMaquina.DataValueField = "id_maquinaria"
-                ddlMaquina.DataBind()
+                cargarMaquinas()
                 ddlOperador.DataSource = objPersonal.listarOperariosCombo
                 ddlOperador.DataTextField = "operador"
                 ddlOperador.DataValueField = "id_personal"
@@ -27,6 +24,13 @@ Partial Class wfActividad
             End Try
         End If
         listarActividad
+    End Sub
+
+    Private Sub cargarMaquinas()
+        ddlMaquina.DataSource = objMaquinaria.listarMaquinasDisponibles
+        ddlMaquina.DataTextField = "maquina"
+        ddlMaquina.DataValueField = "id_maquinaria"
+        ddlMaquina.DataBind()
     End Sub
 
     Private Sub listarActividad()
@@ -46,11 +50,16 @@ Partial Class wfActividad
                 txtId.Text = objActividad.generarIDActividad
                 ddlMaquina.Focus()
             Else
-                btnNuevo.Text = "Nuevo"
-                objActividad.registrarActividad(CInt(ddlMaquina.SelectedValue), CInt(ddlOperador.SelectedValue), ddlZona.Text, ddlCombustibleInicial.SelectedValue, txtHorasEstimadas.Text)
-                lblMensaje.Text = "Actividad registrada correctamente!"
-                limpiarControles()
-                listarActividad()
+                If ddlMaquina.Items.Count = 0 Then
+                    lblMensaje.Text = "No hay máquinas disponibles!"
+                Else
+                    btnNuevo.Text = "Nuevo"
+                    objActividad.registrarActividad(CInt(ddlMaquina.SelectedValue), CInt(ddlOperador.SelectedValue), ddlZona.Text, ddlCombustibleInicial.SelectedValue, txtHorasEstimadas.Text)
+                    lblMensaje.Text = "Actividad registrada correctamente!"
+                    limpiarControles()
+                    listarActividad()
+                    cargarMaquinas()
+                End If
             End If
         Catch ex As Exception
             lblMensaje.Text = ex.Message
@@ -94,6 +103,7 @@ Partial Class wfActividad
             lblMensaje.Text = "Actividad finalizada correctamente!"
             limpiarControles()
             listarActividad()
+            cargarMaquinas()
         Catch ex As Exception
             lblMensaje.Text = ex.Message
         End Try
@@ -111,6 +121,9 @@ Partial Class wfActividad
                 dtAct = objActividad.buscarActividad(CInt(txtId.Text))
                 If dtAct.Rows.Count > 0 Then
                     txtId.Text = dtAct.Rows(0).Item(0)
+                    If ddlMaquina.Items.FindByValue(dtAct.Rows(0).Item(1).ToString()) Is Nothing Then
+                        ddlMaquina.Items.Add(New ListItem(dtAct.Rows(0).Item(2).ToString(), dtAct.Rows(0).Item(1).ToString()))
+                    End If
                     ddlMaquina.SelectedValue = dtAct.Rows(0).Item(1).ToString()
                     ddlOperador.SelectedValue = dtAct.Rows(0).Item(3).ToString()
                     ddlZona.Text = dtAct.Rows(0).Item(6)

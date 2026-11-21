@@ -28,6 +28,10 @@ Public Class clsSolicitud
         strCon = "update solicitudes set id_maquinaria=" & idMaquinaria & ", descripcion='" & descripcion & "', area='" & area & "', prioridad='" & prioridad & "', estado='" & estado & "', comentario='" & comentario & "' where id_solicitud=" & id
         Try
             objMan.ejecutarComando(strCon)
+            If estado = "Aprobado" Then
+                strCon = "update maquinaria set estado='En Mantenimiento' where id_maquinaria=" & idMaquinaria
+                objMan.ejecutarComando(strCon)
+            End If
         Catch ex As Exception
             Throw New Exception("Error al modificar solicitud!")
         End Try

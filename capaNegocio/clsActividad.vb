@@ -19,6 +19,8 @@ Public Class clsActividad
         strCon = "insert into actividad_maquinaria (id_maquinaria, id_personal, zona, combustible_inicial, horas_estimadas, estado, fecha_inicio) values(" & idMaquinaria & "," & idPersonal & ",'" & zona & "'," & combustibleInicial.Replace(",", ".") & "," & horasEstimadas.Replace(",", ".") & ",'ACTIVO',getdate())"
         Try
             objMan.ejecutarComando(strCon)
+            strCon = "update maquinaria set estado='Operativo' where id_maquinaria=" & idMaquinaria
+            objMan.ejecutarComando(strCon)
         Catch ex As Exception
             Throw New Exception("Error al registrar actividad!")
         End Try
@@ -32,6 +34,10 @@ Public Class clsActividad
         strCon = "update actividad_maquinaria set zona='" & zona & "', combustible_inicial=" & combustibleInicial.Replace(",", ".") & ", combustible_final=" & combustibleFinal.Replace(",", ".") & ", horas_estimadas=" & horasEstimadas.Replace(",", ".") & ", horas_reales=" & horasReales.Replace(",", ".") & ", motivo_retraso='" & motivoRetraso & "', observacion_falla='" & observacionFalla & "', estado='" & estado & "' where id_actividad=" & id
         Try
             objMan.ejecutarComando(strCon)
+            If estado = "AVERIADO" Then
+                strCon = "update maquinaria set estado='En Mantenimiento' where id_maquinaria=(select id_maquinaria from actividad_maquinaria where id_actividad=" & id & ")"
+                objMan.ejecutarComando(strCon)
+            End If
         Catch ex As Exception
             Throw New Exception("Error al modificar actividad!")
         End Try
@@ -51,6 +57,8 @@ Public Class clsActividad
         If horasReales = "" Then horasReales = "null"
         strCon = "update actividad_maquinaria set combustible_final=" & combustibleFinal.Replace(",", ".") & ", horas_reales=" & horasReales.Replace(",", ".") & ", motivo_retraso='" & motivoRetraso & "', estado='FINALIZADO', fecha_fin=getdate() where id_actividad=" & id
         Try
+            objMan.ejecutarComando(strCon)
+            strCon = "update maquinaria set estado='Sin Tarea' where id_maquinaria=(select id_maquinaria from actividad_maquinaria where id_actividad=" & id & ")"
             objMan.ejecutarComando(strCon)
         Catch ex As Exception
             Throw New Exception("Error al finalizar actividad!")

@@ -5,3 +5,5 @@ capaNegocio/bin/
 capaNegocio/obj/
 PrecompiledWeb/
 packages/
+.DS_Store
+*.zip

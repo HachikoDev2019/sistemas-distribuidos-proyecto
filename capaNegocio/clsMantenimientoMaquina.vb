@@ -24,6 +24,8 @@ Public Class clsMantenimientoMaquina
         strCon = "insert into mantenimiento (id_maquinaria, tipo, fecha, descripcion, costo, responsable) values(" & idMaquinaria & ",'" & tipo & "','" & fecha & "','" & descripcion & "'," & costo & ",'" & responsable & "')"
         Try
             objMan.ejecutarComando(strCon)
+            strCon = "update maquinaria set estado='Operativo' where id_maquinaria=" & idMaquinaria
+            objMan.ejecutarComando(strCon)
         Catch ex As Exception
             Throw New Exception("Error al registrar mantenimiento!")
         End Try
@@ -53,7 +55,7 @@ Public Class clsMantenimientoMaquina
     End Sub
 
     Public Function buscarMantenimiento(id As Integer) As DataTable
-        strCon = "select m.id_mantenimiento, m.id_maquinaria, m.tipo, convert(varchar(10), m.fecha, 23), m.descripcion, m.costo, m.responsable from mantenimiento m where m.id_mantenimiento=" & id
+        strCon = "select m.id_mantenimiento, m.id_maquinaria, m.tipo, convert(varchar(10), m.fecha, 23), m.descripcion, m.costo, m.responsable, q.nombre_codigo + ' - ' + q.tipo from mantenimiento m inner join maquinaria q on m.id_maquinaria = q.id_maquinaria where m.id_mantenimiento=" & id
         Try
             Return objMan.listarComando(strCon)
         Catch ex As Exception
