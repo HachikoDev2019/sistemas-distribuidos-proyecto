@@ -87,6 +87,16 @@
                         </tr>
                         <tr>
                             <td>
+                                <asp:Button ID="btnMRegistrarSolicitud" runat="server" CssClass="estiloBotonMenu" Text="Registrar solicitud" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMMisSolicitudes" runat="server" CssClass="estiloBotonMenu" Text="Mis solicitudes" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <asp:Button ID="btnMSolicitudes" runat="server" CssClass="estiloBotonMenu" Text="Gestionar solicitudes" Width="100%" />
                             </td>
                         </tr>
@@ -98,6 +108,16 @@
                         <tr>
                             <td>
                                 <asp:Button ID="btnMActividad" runat="server" CssClass="estiloBotonMenu" Text="Actividad de maquinaria" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMJornadasActivas" runat="server" CssClass="estiloBotonMenu" Text="Jornadas activas" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMReporteHoras" runat="server" CssClass="estiloBotonMenu" Text="Reporte de horas" Width="100%" />
                             </td>
                         </tr>
                         <tr>

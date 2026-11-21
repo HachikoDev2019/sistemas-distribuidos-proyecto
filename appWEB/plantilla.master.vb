@@ -18,8 +18,12 @@ Partial Class plantilla
         btnMMaquinaria.Visible = (tipo = "Administrador" Or tipo = "Supervisor")
         btnMMantenimientos.Visible = (tipo = "Administrador" Or tipo = "Supervisor")
         btnMZonas.Visible = (tipo = "Administrador" Or tipo = "Supervisor")
-        btnMSolicitudes.Visible = True
+        btnMSolicitudes.Visible = (tipo = "Administrador" Or tipo = "Supervisor")
+        btnMRegistrarSolicitud.Visible = True
+        btnMMisSolicitudes.Visible = True
         btnMActividad.Visible = True
+        btnMJornadasActivas.Visible = True
+        btnMReporteHoras.Visible = (tipo = "Administrador" Or tipo = "Supervisor")
         btnMIniciarSesion.Visible = False
         btnMBitacora.Visible = (tipo = "Administrador")
         btnMCambiarContrasena.Visible = True
@@ -63,8 +67,24 @@ Partial Class plantilla
         Response.Redirect("wfSolicitudes.aspx")
     End Sub
 
+    Protected Sub btnMRegistrarSolicitud_Click(sender As Object, e As EventArgs) Handles btnMRegistrarSolicitud.Click
+        Response.Redirect("wfRegistrarSolicitud.aspx")
+    End Sub
+
+    Protected Sub btnMMisSolicitudes_Click(sender As Object, e As EventArgs) Handles btnMMisSolicitudes.Click
+        Response.Redirect("wfMisSolicitudes.aspx")
+    End Sub
+
     Protected Sub btnMActividad_Click(sender As Object, e As EventArgs) Handles btnMActividad.Click
         Response.Redirect("wfActividad.aspx")
+    End Sub
+
+    Protected Sub btnMJornadasActivas_Click(sender As Object, e As EventArgs) Handles btnMJornadasActivas.Click
+        Response.Redirect("wfJornadasActivas.aspx")
+    End Sub
+
+    Protected Sub btnMReporteHoras_Click(sender As Object, e As EventArgs) Handles btnMReporteHoras.Click
+        Response.Redirect("wfReporteHoras.aspx")
     End Sub
 
     Protected Sub btnMCambiarContrasena_Click(sender As Object, e As EventArgs) Handles btnMCambiarContrasena.Click

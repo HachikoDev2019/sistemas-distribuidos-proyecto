@@ -123,6 +123,8 @@
                     <asp:ListItem>FINALIZADO</asp:ListItem>
                     <asp:ListItem>AVERIADO</asp:ListItem>
                 </asp:DropDownList>
+                <br />
+                <asp:Label ID="lblAyudaEstado" runat="server" Text="Si la máquina se malogró durante la labor, elija AVERIADO y presione Modificar (escriba la observación de falla)." />
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>

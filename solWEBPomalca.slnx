@@ -23,4 +23,5 @@
       <Property Name="VWDPort" Value="&quot;50377&quot;" />
     </Properties>
   </Project>
+  <Project Path="appWSPomalca/appWSPomalca.vbproj" />
 </Solution>

@@ -87,6 +87,7 @@
                     <asp:ListItem>En revisión</asp:ListItem>
                     <asp:ListItem>Aprobado</asp:ListItem>
                     <asp:ListItem>Rechazado</asp:ListItem>
+                    <asp:ListItem>Atendido</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>

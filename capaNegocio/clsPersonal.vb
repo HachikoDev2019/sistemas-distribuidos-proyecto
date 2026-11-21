@@ -53,6 +53,13 @@ Public Class clsPersonal
     End Sub
 
     Public Sub modificarPersonal(id As Integer, dni As String, nombres As String, apellidos As String, telefono As String, correo As String, contraseña As String, tipo_usuario As String, area As String, vigente As Boolean)
+        If vigente = False Then
+            Dim dt As New DataTable
+            dt = objMan.listarComando("select count(*) from actividad_maquinaria where id_personal=" & id & " and estado='ACTIVO'")
+            If CInt(dt.Rows(0).Item(0)) > 0 Then
+                Throw New Exception("No se puede desactivar: el personal tiene una jornada ACTIVA!")
+            End If
+        End If
         strCon = "update personal set dni='" & dni & "', nombres='" & nombres & "', apellidos='" & apellidos & "', telefono='" & telefono & "', correo='" & correo & "', password='" & contraseña & "', tipo_usuario='" & tipo_usuario & "', area='" & area & "', estado='" & IIf(vigente, "Activo", "Inactivo") & "' where id_personal=" & id
         Try
             objMan.ejecutarComando(strCon)
@@ -71,6 +78,11 @@ Public Class clsPersonal
     End Sub
 
     Public Sub darBajaPersonal(id As Integer)
+        Dim dt As New DataTable
+        dt = objMan.listarComando("select count(*) from actividad_maquinaria where id_personal=" & id & " and estado='ACTIVO'")
+        If CInt(dt.Rows(0).Item(0)) > 0 Then
+            Throw New Exception("No se puede dar de baja: el personal tiene una jornada ACTIVA!")
+        End If
         strCon = "update personal set estado='Inactivo' where id_personal=" & id
         Try
             objMan.ejecutarComando(strCon)

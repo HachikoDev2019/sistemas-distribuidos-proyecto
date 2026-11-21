@@ -25,6 +25,13 @@ Public Class clsMaquinaria
     End Sub
 
     Public Sub modificarMaquinaria(id As Integer, codigo As String, tipo As String, marca As String, modelo As String, area As String, estado As String, observaciones As String)
+        If estado <> "Operativo" Then
+            Dim dt As New DataTable
+            dt = objMan.listarComando("select count(*) from actividad_maquinaria where id_maquinaria=" & id & " and estado='ACTIVO'")
+            If CInt(dt.Rows(0).Item(0)) > 0 Then
+                Throw New Exception("No se puede cambiar el estado: la máquina está en una jornada ACTIVA. Finalice la jornada primero!")
+            End If
+        End If
         strCon = "update maquinaria set nombre_codigo='" & codigo & "', tipo='" & tipo & "', marca='" & marca & "', modelo='" & modelo & "', area='" & area & "', estado='" & estado & "', observaciones='" & observaciones & "' where id_maquinaria=" & id
         Try
             objMan.ejecutarComando(strCon)
@@ -43,6 +50,11 @@ Public Class clsMaquinaria
     End Sub
 
     Public Sub darBajaMaquinaria(id As Integer)
+        Dim dt As New DataTable
+        dt = objMan.listarComando("select count(*) from actividad_maquinaria where id_maquinaria=" & id & " and estado='ACTIVO'")
+        If CInt(dt.Rows(0).Item(0)) > 0 Then
+            Throw New Exception("No se puede dar de baja: la máquina está en una jornada ACTIVA!")
+        End If
         strCon = "update maquinaria set estado='Dado de Baja' where id_maquinaria=" & id
         Try
             objMan.ejecutarComando(strCon)
@@ -88,7 +100,7 @@ Public Class clsMaquinaria
     End Function
 
     Public Function listarMaquinasEnMantenimiento() As DataTable
-        strCon = "select id_maquinaria, nombre_codigo + ' - ' + tipo as maquina from maquinaria where estado='En Mantenimiento' order by nombre_codigo"
+        strCon = "select id_maquinaria, nombre_codigo + ' - ' + tipo as maquina from maquinaria where estado='En Mantenimiento' and not exists (select 1 from actividad_maquinaria a where a.id_maquinaria = maquinaria.id_maquinaria and a.estado='ACTIVO') order by nombre_codigo"
         Try
             Return objMan.listarComando(strCon)
         Catch ex As Exception

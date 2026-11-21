@@ -7,6 +7,9 @@ Partial Class wfSolicitudes
     Dim objMaquinaria As New clsMaquinaria
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If Session("tipo") <> "Administrador" And Session("tipo") <> "Supervisor" Then
+            Response.Redirect("wfInicio.aspx")
+        End If
         If Not IsPostBack Then
             Try
                 ddlMaquina.DataSource = objMaquinaria.listarMaquinasCombo
@@ -60,6 +63,14 @@ Partial Class wfSolicitudes
 
     Protected Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Try
+            If txtId.Text = "" Then
+                lblMensaje.Text = "Seleccione una solicitud!"
+                Exit Sub
+            End If
+            If ddlEstado.Text = "Rechazado" And txtComentario.Text = "" Then
+                lblMensaje.Text = "Escriba en Comentario el motivo del rechazo!"
+                Exit Sub
+            End If
             objSolicitud.modificarSolicitud(CInt(txtId.Text), CInt(ddlMaquina.SelectedValue), txtDescripcion.Text, ddlArea.Text, ddlPrioridad.Text, ddlEstado.Text, txtComentario.Text)
             lblMensaje.Text = "Solicitud modificada correctamente!"
             limpiarControles()
@@ -71,6 +82,10 @@ Partial Class wfSolicitudes
 
     Protected Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Try
+            If txtId.Text = "" Then
+                lblMensaje.Text = "Seleccione una solicitud!"
+                Exit Sub
+            End If
             objSolicitud.eliminarSolicitud(CInt(txtId.Text))
             lblMensaje.Text = "Solicitud eliminada correctamente!"
             limpiarControles()

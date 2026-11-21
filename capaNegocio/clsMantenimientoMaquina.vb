@@ -26,6 +26,8 @@ Public Class clsMantenimientoMaquina
             objMan.ejecutarComando(strCon)
             strCon = "update maquinaria set estado='Operativo' where id_maquinaria=" & idMaquinaria
             objMan.ejecutarComando(strCon)
+            strCon = "update solicitudes set estado='Atendido' where id_maquinaria=" & idMaquinaria & " and estado='Aprobado'"
+            objMan.ejecutarComando(strCon)
         Catch ex As Exception
             Throw New Exception("Error al registrar mantenimiento!")
         End Try

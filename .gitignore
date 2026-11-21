@@ -3,6 +3,7 @@ capaDatos/bin/
 capaDatos/obj/
 capaNegocio/bin/
 capaNegocio/obj/
+appWSPomalca/obj/
 PrecompiledWeb/
 packages/
 .DS_Store
@@ -13,3 +14,5 @@ packages/
 *.zip
 .DS_Store
 *.zip
+
+_to_delete/
