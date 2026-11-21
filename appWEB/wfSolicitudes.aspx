@@ -105,7 +105,10 @@
         </tr>
         <tr>
             <td colspan="4">
-                <asp:GridView ID="grvSolicitudes" runat="server" AutoGenerateSelectButton="True" CssClass="estiloTabla" GridLines="Horizontal" HeaderStyle-CssClass="estiloCabeceraTabla" OnSelectedIndexChanged="grvSolicitudes_SelectedIndexChanged" SelectText="Seleccionar" Width="100%">
+                <asp:GridView ID="grvSolicitudes" runat="server" CssClass="estiloTabla" GridLines="Horizontal" HeaderStyle-CssClass="estiloCabeceraTabla" OnSelectedIndexChanged="grvSolicitudes_SelectedIndexChanged" Width="100%">
+                    <Columns>
+                        <asp:CommandField ShowSelectButton="True" SelectText="Seleccionar" />
+                    </Columns>
                 </asp:GridView>
             </td>
         </tr>

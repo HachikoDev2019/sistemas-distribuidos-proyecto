@@ -119,7 +119,10 @@
         </tr>
         <tr>
             <td colspan="4">
-                <asp:GridView ID="grvPersonal" runat="server" AutoGenerateSelectButton="True" CssClass="estiloTabla" GridLines="Horizontal" HeaderStyle-CssClass="estiloCabeceraTabla" OnSelectedIndexChanged="grvPersonal_SelectedIndexChanged" SelectText="Seleccionar" Width="100%">
+                <asp:GridView ID="grvPersonal" runat="server" CssClass="estiloTabla" GridLines="Horizontal" HeaderStyle-CssClass="estiloCabeceraTabla" OnSelectedIndexChanged="grvPersonal_SelectedIndexChanged" Width="100%">
+                    <Columns>
+                        <asp:CommandField ShowSelectButton="True" SelectText="Seleccionar" />
+                    </Columns>
                 </asp:GridView>
             </td>
         </tr>

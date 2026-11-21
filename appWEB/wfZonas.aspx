@@ -56,7 +56,10 @@
         </tr>
         <tr>
             <td colspan="4">
-                <asp:GridView ID="grvZonas" runat="server" AutoGenerateSelectButton="True" CssClass="estiloTabla" GridLines="Horizontal" HeaderStyle-CssClass="estiloCabeceraTabla" OnSelectedIndexChanged="grvZonas_SelectedIndexChanged" SelectText="Seleccionar" Width="100%">
+                <asp:GridView ID="grvZonas" runat="server" CssClass="estiloTabla" GridLines="Horizontal" HeaderStyle-CssClass="estiloCabeceraTabla" OnSelectedIndexChanged="grvZonas_SelectedIndexChanged" Width="100%">
+                    <Columns>
+                        <asp:CommandField ShowSelectButton="True" SelectText="Seleccionar" />
+                    </Columns>
                 </asp:GridView>
             </td>
         </tr>
