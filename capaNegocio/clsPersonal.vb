@@ -114,4 +114,13 @@ Public Class clsPersonal
             Throw New Exception("Error al listar el personal!")
         End Try
     End Function
+
+    Public Sub cambiarContraseña(dni As String, nueva As String)
+        strCon = "update personal set password='" & nueva & "' where dni='" & dni & "'"
+        Try
+            objMan.ejecutarComando(strCon)
+        Catch ex As Exception
+            Throw New Exception("Error al cambiar la contraseña!")
+        End Try
+    End Sub
 End Class

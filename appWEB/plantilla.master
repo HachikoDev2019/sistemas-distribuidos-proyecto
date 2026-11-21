@@ -41,8 +41,28 @@
                             </td>
                         </tr>
                         <tr>
+                            <td class="estiloEtiqueta">
+                                <asp:Label ID="lblModSeguridad" runat="server" Text="SEGURIDAD"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
-                                <asp:Button ID="btnMPersonal" runat="server" CssClass="estiloBotonMenu" Text="Gestionar personal" Width="100%" />
+                                <asp:Button ID="btnMPersonal" runat="server" CssClass="estiloBotonMenu" Text="Gestionar usuarios" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMCambiarContrasena" runat="server" CssClass="estiloBotonMenu" Text="Cambiar contraseña" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMBitacora" runat="server" CssClass="estiloBotonMenu" Text="Bitácora de accesos" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="estiloEtiqueta">
+                                <asp:Label ID="lblModMaquinaria" runat="server" Text="MAQUINARIA"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -51,13 +71,23 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <asp:Button ID="btnMSolicitudes" runat="server" CssClass="estiloBotonMenu" Text="Solicitudes" Width="100%" />
+                            <td class="estiloEtiqueta">
+                                <asp:Label ID="lblModSolicitudes" runat="server" Text="SOLICITUDES"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:Button ID="btnMActividad" runat="server" CssClass="estiloBotonMenu" Text="Actividad" Width="100%" />
+                                <asp:Button ID="btnMSolicitudes" runat="server" CssClass="estiloBotonMenu" Text="Gestionar solicitudes" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="estiloEtiqueta">
+                                <asp:Label ID="lblModOperaciones" runat="server" Text="OPERACIONES"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMActividad" runat="server" CssClass="estiloBotonMenu" Text="Actividad de maquinaria" Width="100%" />
                             </td>
                         </tr>
                         <tr>

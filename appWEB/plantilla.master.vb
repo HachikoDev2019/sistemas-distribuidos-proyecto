@@ -1,6 +1,8 @@
 ﻿
+Imports capaNegocio
 Partial Class plantilla
     Inherits System.Web.UI.MasterPage
+    Dim objBitacora As New clsBitacora
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Session("tipo") Is Nothing Then
@@ -17,6 +19,9 @@ Partial Class plantilla
         btnMSolicitudes.Visible = True
         btnMActividad.Visible = True
         btnMIniciarSesion.Visible = False
+        btnMBitacora.Visible = (tipo = "Administrador")
+        btnMCambiarContrasena.Visible = True
+        lblModMaquinaria.Visible = btnMMaquinaria.Visible
     End Sub
 
     Protected Sub btnMInicio_Click(sender As Object, e As EventArgs) Handles btnMInicio.Click
@@ -28,6 +33,10 @@ Partial Class plantilla
     End Sub
 
     Protected Sub btnMCerrarSesion_Click(sender As Object, e As EventArgs) Handles btnMCerrarSesion.Click
+        Try
+            objBitacora.registrar(CInt(Session("id")), "logout", 0)
+        Catch ex As Exception
+        End Try
         Session.Abandon()
         Response.Redirect("wfLogin.aspx")
     End Sub
@@ -46,5 +55,13 @@ Partial Class plantilla
 
     Protected Sub btnMActividad_Click(sender As Object, e As EventArgs) Handles btnMActividad.Click
         Response.Redirect("wfActividad.aspx")
+    End Sub
+
+    Protected Sub btnMCambiarContrasena_Click(sender As Object, e As EventArgs) Handles btnMCambiarContrasena.Click
+        Response.Redirect("wfCambiarContrasena.aspx")
+    End Sub
+
+    Protected Sub btnMBitacora_Click(sender As Object, e As EventArgs) Handles btnMBitacora.Click
+        Response.Redirect("wfBitacora.aspx")
     End Sub
 End Class
