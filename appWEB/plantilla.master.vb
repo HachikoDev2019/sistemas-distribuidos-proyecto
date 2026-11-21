@@ -16,6 +16,8 @@ Partial Class plantilla
         Dim tipo As String = Session("tipo")
         btnMPersonal.Visible = (tipo = "Administrador")
         btnMMaquinaria.Visible = (tipo = "Administrador" Or tipo = "Supervisor")
+        btnMMantenimientos.Visible = (tipo = "Administrador" Or tipo = "Supervisor")
+        btnMZonas.Visible = (tipo = "Administrador" Or tipo = "Supervisor")
         btnMSolicitudes.Visible = True
         btnMActividad.Visible = True
         btnMIniciarSesion.Visible = False
@@ -47,6 +49,14 @@ Partial Class plantilla
 
     Protected Sub btnMMaquinaria_Click(sender As Object, e As EventArgs) Handles btnMMaquinaria.Click
         Response.Redirect("wfMaquinaria.aspx")
+    End Sub
+
+    Protected Sub btnMMantenimientos_Click(sender As Object, e As EventArgs) Handles btnMMantenimientos.Click
+        Response.Redirect("wfMantenimientos.aspx")
+    End Sub
+
+    Protected Sub btnMZonas_Click(sender As Object, e As EventArgs) Handles btnMZonas.Click
+        Response.Redirect("wfZonas.aspx")
     End Sub
 
     Protected Sub btnMSolicitudes_Click(sender As Object, e As EventArgs) Handles btnMSolicitudes.Click

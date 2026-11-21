@@ -5,6 +5,7 @@ Partial Class wfActividad
     Dim objActividad As New clsActividad
     Dim objMaquinaria As New clsMaquinaria
     Dim objPersonal As New clsPersonal
+    Dim objZona As New clsZona
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
@@ -17,6 +18,10 @@ Partial Class wfActividad
                 ddlOperador.DataTextField = "operador"
                 ddlOperador.DataValueField = "id_personal"
                 ddlOperador.DataBind()
+                ddlZona.DataSource = objZona.listarZonasCombo
+                ddlZona.DataTextField = "nombre"
+                ddlZona.DataValueField = "nombre"
+                ddlZona.DataBind()
             Catch ex As Exception
                 lblMensaje.Text = ex.Message
             End Try

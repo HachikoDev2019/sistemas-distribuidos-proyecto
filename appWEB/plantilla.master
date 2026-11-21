@@ -71,6 +71,16 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <asp:Button ID="btnMMantenimientos" runat="server" CssClass="estiloBotonMenu" Text="Mantenimientos" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMZonas" runat="server" CssClass="estiloBotonMenu" Text="Zonas de trabajo" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="estiloEtiqueta">
                                 <asp:Label ID="lblModSolicitudes" runat="server" Text="SOLICITUDES"></asp:Label>
                             </td>

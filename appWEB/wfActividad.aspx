@@ -47,9 +47,6 @@
             <td class="estiloEtiqueta">Zona:</td>
             <td>
                 <asp:DropDownList ID="ddlZona" runat="server" CssClass="estiloCaja">
-                    <asp:ListItem>Anexo Pampagrande</asp:ListItem>
-                    <asp:ListItem>Anexo Saltur</asp:ListItem>
-                    <asp:ListItem>Sipán Lote 4</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
