@@ -1,0 +1,97 @@
+﻿body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #2D3436;
+    background-color: #F4F6F9;
+    margin: 0;
+    padding: 0;
+}
+.estiloCabecera, .estiloPie, .estiloSeccion, .estiloCabeceraTabla {
+    background-color: #5B7FB1;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.estiloCabecera {
+    height: 80px;
+    padding: 8px;
+    font-size: 18px;
+}
+.estiloLogo {
+    height: 60px;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+}
+.estiloMenu {
+    width: 220px;
+    background-color: #FFFFFF;
+    border: 1px solid #DCDDE1;
+    vertical-align: top;
+    padding: 10px;
+}
+.estiloCuerpo {
+    background-color: #F4F6F9;
+    vertical-align: top;
+    padding: 20px;
+}
+.estiloPie { text-align: center; height: 40px; font-size: 13px; }
+.estiloTitulo {
+    color: #5B7FB1;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 8px 0;
+}
+.estiloSubtitulo {
+    color: #8A99AA;
+    font-size: 14px;
+    padding: 0 0 12px 0;
+}
+.estiloEtiqueta {
+    color: #2D3436;
+    font-size: 14px;
+    font-weight: bold;
+}
+.estiloCaja {
+    padding: 6px;
+    border: 1px solid #DCDDE1;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.estiloBoton, .estiloBotonRojo {
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.estiloBoton { background-color: #5B7FB1; }
+.estiloBoton:hover { background-color: #4A6A99; }
+.estiloBotonRojo { background-color: #C0392B; }
+.estiloMensaje { color: #C0392B; font-size: 14px; font-weight: bold; }
+.estiloTabla {
+    width: 100%;
+    border: 1px solid #DCDDE1;
+    background-color: #FFFFFF;
+}
+.estiloTabla td, .estiloLogin td { padding: 8px; }
+.estiloCabeceraTabla { text-align: left; padding: 8px; }
+.estiloSeccion { padding: 8px; }
+.estiloLogin {
+    width: 380px;
+    background-color: #FFFFFF;
+    border: 1px solid #DCDDE1;
+    padding: 24px;
+}
+.estiloBotonMenu {
+    background-color: #FFFFFF;
+    color: #2D3436;
+    border: 0;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+}
+.estiloBotonMenu:hover {
+    background-color: #F4F6F9;
+    color: #5B7FB1;
+}

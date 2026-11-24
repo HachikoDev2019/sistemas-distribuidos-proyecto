@@ -4,6 +4,7 @@ capaDatos/obj/
 capaNegocio/bin/
 capaNegocio/obj/
 appWSPomalca/obj/
+appWEBWS/obj/
 PrecompiledWeb/
 packages/
 .DS_Store

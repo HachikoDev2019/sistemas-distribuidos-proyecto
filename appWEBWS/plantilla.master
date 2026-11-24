@@ -1,0 +1,141 @@
+﻿<%@ Master Language="VB" CodeFile="plantilla.master.vb" Inherits="plantilla" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="css/estilos.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <table align="center" cellpadding="0" cellspacing="0" width="1100">
+            <tr>
+                <td class="estiloCabecera" colspan="2">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td>
+                                <img alt="Pomalca" class="estiloLogo" src="recursos/POMALCA.jpg" />
+                                Sistema de Gestión de Maquinaria Agrícola
+                            </td>
+                            <td style="text-align: right">
+                                <asp:Label ID="lblUsuario" runat="server"></asp:Label>
+                                &nbsp;
+                                <asp:Button ID="btnMCerrarSesion" runat="server" CssClass="estiloBotonMenu" Text="Cerrar sesión" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="estiloMenu">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td class="estiloEtiqueta">MENÚ</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMInicio" runat="server" CssClass="estiloBotonMenu" Text="Inicio" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="estiloEtiqueta">
+                                <asp:Label ID="lblModSeguridad" runat="server" Text="SEGURIDAD"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMPersonal" runat="server" CssClass="estiloBotonMenu" Text="Gestionar usuarios" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMCambiarContrasena" runat="server" CssClass="estiloBotonMenu" Text="Cambiar contraseña" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMBitacora" runat="server" CssClass="estiloBotonMenu" Text="Bitácora de accesos" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="estiloEtiqueta">
+                                <asp:Label ID="lblModMaquinaria" runat="server" Text="MAQUINARIA"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMMaquinaria" runat="server" CssClass="estiloBotonMenu" Text="Gestionar maquinaria" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMMantenimientos" runat="server" CssClass="estiloBotonMenu" Text="Mantenimientos" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMZonas" runat="server" CssClass="estiloBotonMenu" Text="Zonas de trabajo" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="estiloEtiqueta">
+                                <asp:Label ID="lblModSolicitudes" runat="server" Text="SOLICITUDES"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMRegistrarSolicitud" runat="server" CssClass="estiloBotonMenu" Text="Registrar solicitud" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMMisSolicitudes" runat="server" CssClass="estiloBotonMenu" Text="Mis solicitudes" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMSolicitudes" runat="server" CssClass="estiloBotonMenu" Text="Gestionar solicitudes" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="estiloEtiqueta">
+                                <asp:Label ID="lblModOperaciones" runat="server" Text="OPERACIONES"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMActividad" runat="server" CssClass="estiloBotonMenu" Text="Actividad de maquinaria" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMJornadasActivas" runat="server" CssClass="estiloBotonMenu" Text="Jornadas activas" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMReporteHoras" runat="server" CssClass="estiloBotonMenu" Text="Reporte de horas" Width="100%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnMIniciarSesion" runat="server" CssClass="estiloBotonMenu" Text="Iniciar sesión" Width="100%" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="estiloCuerpo">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td class="estiloPie" colspan="2">© 2026 Sistema Pomalca - Grupo 2 - USAT</td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
